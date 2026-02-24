@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Matcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .job-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .job-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .job-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+        .company {
+            font-weight: 600;
+            color: #555;
+        }
+        .description {
+            margin: 10px 0;
+            color: #666;
+        }
+        .apply-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .apply-link:hover {
+            background-color: #0056b3;
+        }
+        .source {
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 10px;
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 Job Matcher – Latest Remote Jobs</h1>
+    <div class="job-container" id="job-list">
+        <div class="loading">Loading jobs...</div>
+    </div>
+
+    <script>
+        // Fetch jobs from our API and display them
+        fetch('/api/jobs')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('job-list');
+                container.innerHTML = ''; // clear loading message
+
+                // Handle API 202 message or error objects
+                if (!Array.isArray(data)) {
+                    if (data && data.message) {
+                        container.innerHTML = `<p style="text-align:center;">${data.message}</p>`;
+                        return;
+                    }
+                    container.innerHTML = '<p style="text-align:center;">No jobs available.</p>';
+                    return;
+                }
+
+                if (data.length === 0) {
+                    container.innerHTML = '<p style="text-align:center;">No jobs found. Try again later.</p>';
+                    return;
+                }
+
+                data.forEach(job => {
+                    const card = document.createElement('div');
+                    card.className = 'job-card';
+                    card.innerHTML = `
+                        <div class="job-title">${job.title || 'Untitled'}</div>
+                        <div class="company">${job.company || 'Unknown'}</div>
+                        <div class="description">${job.description || 'No description provided.'}</div>
+                        <a href="${job.url || '#'}" class="apply-link" target="_blank">Apply</a>
+                        <div class="source">Source: ${job.source || 'unknown'}</div>
+                    `;
+                    container.appendChild(card);
+                });
+            })
+            .catch(error => {
+                document.getElementById('job-list').innerHTML = '<p style="color:red;">Error loading jobs.</p>';
+                console.error(error);
+            });
+    </script>
+</body>
+</html>

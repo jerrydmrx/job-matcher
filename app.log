@@ -1,0 +1,24 @@
+2026-02-23 14:20:16,598 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.192:5000
+2026-02-23 14:20:16,599 INFO [33mPress CTRL+C to quit[0m
+2026-02-23 14:20:16,953 INFO Background job thread started
+2026-02-23 14:20:16,969 INFO 127.0.0.1 - - [23/Feb/2026 14:20:16] "GET / HTTP/1.1" 200 -
+2026-02-23 14:23:13,216 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.192:5000
+2026-02-23 14:23:13,217 INFO [33mPress CTRL+C to quit[0m
+2026-02-23 14:23:13,446 INFO Background job thread started
+2026-02-23 14:23:13,447 INFO 127.0.0.1 - - [23/Feb/2026 14:23:13] "GET /health HTTP/1.1" 200 -
+2026-02-23 14:25:21,494 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.192:5000
+2026-02-23 14:25:21,494 INFO [33mPress CTRL+C to quit[0m
+2026-02-23 14:25:43,860 INFO 127.0.0.1 - - [23/Feb/2026 14:25:43] "GET / HTTP/1.1" 200 -
+2026-02-23 14:25:44,268 INFO 127.0.0.1 - - [23/Feb/2026 14:25:44] "GET /api/jobs HTTP/1.1" 200 -
+2026-02-23 14:30:24,482 INFO 127.0.0.1 - - [23/Feb/2026 14:30:24] "GET / HTTP/1.1" 200 -
+2026-02-23 14:43:23,653 INFO 127.0.0.1 - - [23/Feb/2026 14:43:23] "GET / HTTP/1.1" 200 -
+2026-02-23 14:43:23,763 INFO 127.0.0.1 - - [23/Feb/2026 14:43:23] "GET /api/jobs HTTP/1.1" 200 -
